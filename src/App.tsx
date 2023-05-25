@@ -6,7 +6,9 @@ function App() {
   return (
     <>
         <h1>Sudoku Solver</h1>
-        <SudokuBoard />
+        <div className='bg-wood board-div'>
+            <SudokuBoard />
+        </div>
     </>
   );
 }

@@ -1,1 +1,10 @@
+.bg-wood {
+    background-image: url(./Images/wood-texture.jpg);
+    padding: 2rem;
+}
 
+.board-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
