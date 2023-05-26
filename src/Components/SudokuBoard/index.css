@@ -1,3 +1,13 @@
+:root {
+    --board-width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --board-width: 75%;
+    }
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -11,9 +21,10 @@ select:focus {
 
 .sudoku-board{
     display: grid;
-    width: min-content;
-    grid-template-rows: repeat(3, min-content);
-    grid-template-columns: repeat(3, min-content);
+    width: var(--board-width);
+    aspect-ratio: 1 / 1;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     background-color: black;
     border: 2px solid black;
 }
@@ -21,9 +32,8 @@ select:focus {
 .board-subsquare {
     margin: 0;
     display: grid;
-    width: min-content;
-    grid-template-rows: repeat(3, 3rem);
-    grid-template-columns: repeat(3, 3rem);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background-color: black;
     border: 2px solid black;

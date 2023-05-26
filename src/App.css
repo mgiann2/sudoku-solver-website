@@ -1,10 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+body {
+    font-family: 'Lora', serif;
+}
+
+button {
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    background-color: white;
+    width: 6rem;
+    aspect-ratio: 5 / 3;
+}
+
 .bg-wood {
     background-image: url(./Images/wood-texture.jpg);
     padding: 2rem;
+}
+
+.bg-lightbeige {
+    background-color: hsl(30, 77%, 95%);
+}
+
+.content-div {
+    margin: 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-div h1 {
+    margin: 0;
+    font-size: 3rem;
+}
+
+.content-div p {
+    margin: 0 5%;
+    text-align: center;
 }
 
 .board-div {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 0 0.2rem black;
+}
+
+.button-div {
+    margin: 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btn-solve {
+    border-color: rgb(0, 200, 0);
+    color: rgb(0, 200, 0);
+    font-size: 1.2rem;
+    transition-duration: 0.2s;
+    box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-solve:hover {
+    border-color: rgb(0, 200, 0);
+    color: white;
+    background-color: rgb(0, 200, 0);
+    transform: translateY(0.1rem);
+}
+
+.btn-solve:active {
+    border-color: rgb(0, 150, 0);
+    color: white;
+    background-color: rgb(0, 150, 0);
+    transform: translateY(0.2rem);
+}
+
+.btn-clear {
+    border-color: red;
+    color: red;
+    font-size: 1.2rem;
+    transition-duration: 0.2s;
+    box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-clear:hover {
+    border-color: red;
+    color: white;
+    background-color: red;
+    transform: translateY(0.1rem);
+}
+
+.btn-clear:active {
+    border-color: rgb(205, 0, 0);
+    color: white;
+    background-color: rgb(205, 0, 0);
+    transform: translateY(0.2rem);
 }
