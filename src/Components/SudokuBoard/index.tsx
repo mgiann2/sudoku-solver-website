@@ -1,27 +1,26 @@
 import React from "react";
-import { useState } from "react";
 import './index.css';
 
-function SudokuBoard() {
+function SudokuBoard(props: any) {
+    function updateSquare(i: number, j: number, val: string)
+    {
+        let newBoard: string[][] = JSON.parse(JSON.stringify(props.board));
+        newBoard[i][j] = val;
+        console.log(newBoard);
+        props.updateBoard(newBoard);
+    }
+
     return (
         <div className="sudoku-board">
-            {Array.apply(0, Array(9)).map((x, i) => {
+            {props.board.map((x: string[], i: number) => {
                 return (
                     <div className="board-subsquare">
-                        {Array.apply(0, Array(9)).map((x, i) => {
+                        {x.map((val, j) => {
                             return (
-                                <select className="board-item" name="sudoku-square" >
-                                    <option value="" selected></option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
+                                <select className="board-item" name="sudoku-square" value={val} onChange={(e) => updateSquare(i, j, e.target.value)}>
+                                    {["", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map(d => (
+                                        <option value={d} selected={val === d}>{d}</option>
+                                    ))}
                                 </select>
                             )
                         })}
