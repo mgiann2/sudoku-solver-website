@@ -3,8 +3,15 @@ import { useState } from 'react';
 import './App.css';
 import SudokuBoard from './Components/SudokuBoard';
 
+enum BoardStatus {
+    Neutral = "white",
+    Success = "hsl(120, 100%, 90%)",
+    Fail = "hsl(0, 100%, 90%)",
+};
+
 function App() {
     let [board, updateBoard] = useState(new Array(9).fill(new Array(9).fill('')));
+    let [boardStatus, updateBoardStatus] = useState(BoardStatus.Neutral);
 
     return (
         <>
@@ -15,7 +22,7 @@ function App() {
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quae blanditiis velit fugiat. Quibusdam natus sunt minima id rerum excepturi repellendus vel perspiciatis culpa? Magni praesentium neque saepe perferendis tenetur!</p>
             </div>
             <div className='bg-wood board-div'>
-                <SudokuBoard board={board} updateBoard={updateBoard}/>
+                <SudokuBoard board={board} updateBoard={updateBoard} statusColor={boardStatus}/>
                 <div className='button-div'>
                     <button className='btn-solve'>Solve</button>
                     <button className='btn-clear'>Clear</button>
