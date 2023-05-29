@@ -51,10 +51,9 @@ button {
 }
 
 .button-div {
-    margin: 0;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    margin-top: 3rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 2rem;

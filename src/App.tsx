@@ -16,10 +16,10 @@ function App() {
             </div>
             <div className='bg-wood board-div'>
                 <SudokuBoard board={board} updateBoard={updateBoard}/>
-            </div>
-            <div className='button-div'>
-                <button className='btn-solve'>Solve</button>
-                <button className='btn-clear'>Clear</button>
+                <div className='button-div'>
+                    <button className='btn-solve'>Solve</button>
+                    <button className='btn-clear'>Clear</button>
+                </div>
             </div>
         </>
     );

@@ -1,10 +1,17 @@
-:root {
-    --board-width: 50%;
-}
-
 @media only screen and (max-width: 600px) {
     :root {
         --board-width: 75%;
+    }
+}
+@media only screen and (min-width: 600px) {
+    :root {
+        --board-width: 50%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    :root {
+        --board-width: 35%;
     }
 }
 
