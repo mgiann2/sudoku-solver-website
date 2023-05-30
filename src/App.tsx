@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import SudokuBoard from './Components/SudokuBoard';
-import { boardToCSP, CSPToBoard } from './Helpers/sudoku-board';
 
 enum BoardStatus {
     Neutral = "white",
@@ -20,13 +19,17 @@ function App() {
     }
 
     function solveBoard() {
-        let sudokuCSP = boardToCSP(board);
-        if(sudokuCSP.GACSolve()) {
-            updateBoard(CSPToBoard(sudokuCSP));
-            updateBoardStatus(BoardStatus.Success);
-        } 
-        else {
-            updateBoardStatus(BoardStatus.Fail)
+        let sudokuSolver = new Worker(new URL("./Helpers/solver.ts", import.meta.url));
+        sudokuSolver.postMessage(board);
+        
+        sudokuSolver.onmessage = (e: MessageEvent) => {
+            if(e.data !== null) {
+                updateBoard(e.data);
+                updateBoardStatus(BoardStatus.Success);
+            } 
+            else {
+                updateBoardStatus(BoardStatus.Fail);
+            }
         }
     }
 
