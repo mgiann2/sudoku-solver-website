@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import SudokuBoard from './Components/SudokuBoard';
+import { boardToCSP, CSPToBoard } from './Helpers/sudoku-board';
 
 enum BoardStatus {
     Neutral = "white",
@@ -18,6 +19,17 @@ function App() {
         updateBoardStatus(BoardStatus.Neutral);
     }
 
+    function solveBoard() {
+        let sudokuCSP = boardToCSP(board);
+        if(sudokuCSP.GACSolve()) {
+            updateBoard(CSPToBoard(sudokuCSP));
+            updateBoardStatus(BoardStatus.Success);
+        } 
+        else {
+            updateBoardStatus(BoardStatus.Fail)
+        }
+    }
+
     return (
         <>
             <div className='content-div bg-lightbeige'>
@@ -29,7 +41,7 @@ function App() {
             <div className='bg-wood board-div'>
                 <SudokuBoard board={board} updateBoard={updateBoard} statusColor={boardStatus}/>
                 <div className='button-div'>
-                    <button className='btn-solve'>Solve</button>
+                    <button className='btn-solve' onClick={solveBoard}>Solve</button>
                     <button className='btn-clear' onClick={clearBoard}>Clear</button>
                 </div>
             </div>
