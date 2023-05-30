@@ -13,6 +13,11 @@ function App() {
     let [board, updateBoard] = useState(new Array(9).fill(new Array(9).fill('')));
     let [boardStatus, updateBoardStatus] = useState(BoardStatus.Neutral);
 
+    function clearBoard() {
+        updateBoard(new Array(9).fill(new Array(9).fill('')));
+        updateBoardStatus(BoardStatus.Neutral);
+    }
+
     return (
         <>
             <div className='content-div bg-lightbeige'>
@@ -25,7 +30,7 @@ function App() {
                 <SudokuBoard board={board} updateBoard={updateBoard} statusColor={boardStatus}/>
                 <div className='button-div'>
                     <button className='btn-solve'>Solve</button>
-                    <button className='btn-clear'>Clear</button>
+                    <button className='btn-clear' onClick={clearBoard}>Clear</button>
                 </div>
             </div>
         </>
