@@ -8,7 +8,7 @@ export class Variable
     name: string
     domain: string[]
     curr_domain: boolean[]
-    assigned_val: string | null = null
+    assigned_val: string = null
 
     constructor(name: string, domain: string[])
     {
@@ -376,7 +376,7 @@ export class CSP
         {
             if(csp.allVarsAssigned())
             {
-                return true
+                return !csp.constraints.some((c) => !c.isSatisfied())
             }
 
             let v = csp.pickVariable()
@@ -427,7 +427,7 @@ export class CSP
         {
             if(csp.allVarsAssigned())
             {
-                return true
+                return !csp.constraints.some((c) => !c.isSatisfied())
             }
 
             let v = csp.pickVariable()
