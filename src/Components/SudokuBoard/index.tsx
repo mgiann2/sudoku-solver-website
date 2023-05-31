@@ -1,5 +1,6 @@
 import React from "react";
 import './index.css';
+import { BoardStatus } from "../../App";
 
 function SudokuBoard(props: any) {
     function updateSquare(i: number, j: number, val: string)
@@ -8,6 +9,7 @@ function SudokuBoard(props: any) {
         newBoard[i][j] = val;
         console.log(newBoard);
         props.updateBoard(newBoard);
+        props.updateBoardStatus(BoardStatus.Neutral);
     }
 
     return (
