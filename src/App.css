@@ -14,6 +14,19 @@ button {
     aspect-ratio: 5 / 3;
 }
 
+a {
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    background-color: white;
+    width: 6rem;
+    aspect-ratio: 5 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .bg-wood {
     background-image: url(./Images/wood-texture.jpg);
     padding: 2rem;
@@ -106,5 +119,29 @@ button {
     border-color: rgb(205, 0, 0);
     color: white;
     background-color: rgb(205, 0, 0);
+    transform: translateY(0.2rem);
+}
+
+.btn-github {
+    border-color: hsl(29, 81%, 60%);
+    color: hsl(29, 81%, 60%);
+    fill: hsl(29, 81%, 60%);
+    font-size: 1.2rem;
+    transition-duration: 0.2s;
+    box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-github:hover {
+    border-color: hsl(29, 81%, 60%);
+    color: white;
+    fill: white;
+    background-color: hsl(29, 81%, 60%);
+    transform: translateY(0.1rem);
+}
+
+.btn-github:active {
+    border-color: hsl(29, 81%, 45%);
+    color: white;
+    background-color: hsl(29, 81%, 45%);
     transform: translateY(0.2rem);
 }
