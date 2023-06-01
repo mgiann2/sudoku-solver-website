@@ -65,7 +65,9 @@ function App() {
                 <h1>Sudoku Solver</h1>
             </div>
             <div className='content-div'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis quae blanditiis velit fugiat. Quibusdam natus sunt minima id rerum excepturi repellendus vel perspiciatis culpa? Magni praesentium neque saepe perferendis tenetur!</p>
+                <h3>Welcome to Sudoku Solver!</h3>
+                <p>Click on the squares of Sudoku board below to input numbers. When you have inputted all the numbers, click the solve button to start computing a solution. To reset the board press the clear button.</p>
+                <p><strong>NOTE:</strong> the time to solve a Sudoku board increases as less squares on the board are filled. For reference, solving a board with 20 filled squares takes roughly 15 seconds. This time may vary depending on your device. </p>
             </div>
             <div className='bg-wood board-div'>
                 <SudokuBoard board={board} updateBoard={updateBoard} updateBoardStatus={updateBoardStatus} statusColor={boardStatus}/>

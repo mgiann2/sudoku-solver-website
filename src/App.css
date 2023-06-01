@@ -25,11 +25,13 @@ button {
 
 .content-div {
     margin: 0;
+    padding: 0 10%;
     padding-top: 3rem;
     padding-bottom: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .content-div h1 {
@@ -37,8 +39,12 @@ button {
     font-size: 3rem;
 }
 
+.content-div h3 {
+    margin: 0;
+}
+
 .content-div p {
-    margin: 0 5%;
+    margin: 1rem 5% 0 5%;
     text-align: center;
 }
 
