@@ -105,13 +105,13 @@ function App() {
     function getSolverStatusMessage() {
         switch(solverStatus) {
             case SolverStatus.NotStarted:
-                return "Fill out the Sudoku board and let the solver complete it!";
+                return <><p>Fill out the Sudoku board and let the solver complete it</p></>;
             case SolverStatus.Working:
-                return "Solving the current Sudoku board. This may take some time.";
+                return <><p>Solving</p> <span style={{margin: "1rem 0 0 0"}} className='loader'></span></>;
             case SolverStatus.Succeeded:
-                return "A solution has been found!";
+                return <><p>A solution has been found</p></>;
             case SolverStatus.Failed:
-                return "There is no possible solution.";
+                return <><p>There is no possible solution</p></>;
         }
     }
 
@@ -133,7 +133,7 @@ function App() {
                 </div>
             </div>
             <div className='content-div'>
-                <p>{getSolverStatusMessage()}</p>
+                {getSolverStatusMessage()}
             </div>
             <div className='content-div bg-lightbeige'>
                 <h3>Check this project out on Github!</h3>
