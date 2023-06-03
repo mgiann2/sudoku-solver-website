@@ -72,12 +72,17 @@ function getRandomBoard(): string[][] {
     return boards[Math.floor(Math.random() * boards.length)]
 }
 
+let currSolver: Worker = null;
+
 function App() {
     let [board, updateBoard] = useState(getRandomBoard());
     let [boardStatus, updateBoardStatus] = useState(BoardStatus.Neutral);
     let [solverStatus, updateSolverStatus] = useState(SolverStatus.NotStarted);
 
     function clearBoard() {
+        if(currSolver !== null) {
+            currSolver.terminate();
+        }
         updateBoard(new Array(9).fill(new Array(9).fill('')));
         updateBoardStatus(BoardStatus.Neutral);
         updateSolverStatus(SolverStatus.NotStarted);
@@ -85,11 +90,12 @@ function App() {
 
     function solveBoard() {
         let sudokuSolver = new Worker(new URL("./Helpers/solver.ts", import.meta.url));
-        console.log(board)
+        currSolver = sudokuSolver;
         sudokuSolver.postMessage(board);
         updateSolverStatus(SolverStatus.Working);
         
         sudokuSolver.onmessage = (e: MessageEvent) => {
+            currSolver = null;
             if(e.data !== null) {
                 updateBoard(e.data);
                 updateBoardStatus(BoardStatus.Success);
