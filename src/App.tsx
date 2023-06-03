@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import SudokuBoard from './Components/SudokuBoard';
+import { start } from 'repl';
 
 const board1 = [['', '', '', '', '', '9', '6', '', '8'],
                 ['7', '', '', '', '', '', '', '4', ''],
@@ -73,6 +74,8 @@ function getRandomBoard(): string[][] {
 }
 
 let currSolver: Worker = null;
+let startTime = performance.now();
+let endTime = performance.now();
 
 function App() {
     let [board, updateBoard] = useState(getRandomBoard());
@@ -89,6 +92,7 @@ function App() {
     }
 
     function solveBoard() {
+        startTime = performance.now();
         let sudokuSolver = new Worker(new URL("./Helpers/solver.ts", import.meta.url));
         currSolver = sudokuSolver;
         sudokuSolver.postMessage(board);
@@ -97,6 +101,7 @@ function App() {
         sudokuSolver.onmessage = (e: MessageEvent) => {
             currSolver = null;
             if(e.data !== null) {
+                endTime = performance.now();
                 updateBoard(e.data);
                 updateBoardStatus(BoardStatus.Success);
                 updateSolverStatus(SolverStatus.Succeeded);
@@ -115,7 +120,8 @@ function App() {
             case SolverStatus.Working:
                 return <><p>Solving</p> <span style={{margin: "1rem 0 0 0"}} className='loader'></span></>;
             case SolverStatus.Succeeded:
-                return <><p>A solution has been found</p></>;
+                let solutionTime = ((endTime - startTime) / 1000).toFixed(3);
+                return <><p>Solution found in {solutionTime}s</p></>;
             case SolverStatus.Failed:
                 return <><p>There is no possible solution</p></>;
         }

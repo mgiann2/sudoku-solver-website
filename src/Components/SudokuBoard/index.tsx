@@ -21,7 +21,7 @@ function SudokuBoard(props: any) {
                             return (
                                 <select className="board-item" style={{backgroundColor: props.statusColor}} name="sudoku-square" value={val} onChange={(e) => updateSquare(i, j, e.target.value)}>
                                     {["", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map(d => (
-                                        <option value={d} selected={val === d}>{d}</option>
+                                        <option value={d}>{d}</option>
                                     ))}
                                 </select>
                             )
